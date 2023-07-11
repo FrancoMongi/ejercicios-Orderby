@@ -45,4 +45,27 @@ SELECT title,rating,length FROM `film` WHERE rating LIKE 'PG' AND length > 120;
 
 
 
+Ejercicos BD Sakila
+
+1- ¿Cuantos actores hay?
+SELECT COUNT(*) as NumeroDeActores FROM `actor`;
+
+2-¿Cuantos countries hay que empezan por "a"?
+SELECT COUNT(country) FROM `country` WHERE country LIKE 'a%';
+
+3-Cual es el promedio de duracion de peliculas con PG
+SELECT AVG(length) FROM `film` WHERE rating = "PG";
+
+
+4-Suma de rental_date de todas las Peliculas
+SELECT SUM(rental_rate) FROM `film`;
+
+5-Pelicula con mayor duracion
+SELECT MAX(length) as DuracionMax FROM `film`;
+
+6-Pelicula con menor duracion
+SELECT MIN(length) as DuracionMin FROM `film`;
+
+
+
 
