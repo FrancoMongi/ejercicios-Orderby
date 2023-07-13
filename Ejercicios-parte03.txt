@@ -1,0 +1,138 @@
+A- Base de datos SAKILA - GENERALES
+
+1. Mostrar todas las pel�culas en orden alfab�tico por t�tulo
+SELECT * FROM `film` ORDER BY title ASC;
+
+2. Mostrar los nombres y apellidos de todos los actores en orden inverso alfab�tico
+SELECT first_name, last_name FROM `actor` ORDER BY first_name DESC;
+
+3. Mostrar los nombres de todas las ciudades en orden alfab�tico inverso
+SELECT city FROM `city` ORDER BY city DESC;
+
+4. Mostrar los nombres de todas las categor�as en orden alfab�tico junto con su ID
+SELECT name,category_id FROM `category` ORDER BY category_id ASC;
+
+5. Mostrar los nombres de todos los clientes en orden aleatorio
+SELECT first_name FROM customers ORDER BY rand()
+
+6. Mostrar los nombres de todos los idiomas en orden alfab�tico junto con su ID
+SELECT name, language_id FROM `language` ORDER BY language_id;
+
+7. Mostrar los nombres de todos los empleados en orden inverso alfab�tico junto con su ID
+SELECT staff_id,concat(first_name,' ',last_name) as full name FROM `staff` ORDER BY staff_id DESC;
+
+8. Mostrar los nombres de todas las pel�culas que tengan una clasificaci�n "G" en orden alfab�tico
+SELECT title,rating FROM `film` WHERE rating = 'G' ORDER BY title;
+
+9-  Mostrar los nombres de todas las pel�culas que sean del lenaguaje "Ingles" en orden aleatorio
+SELECT title,language_id FROM `film` WHERE language_id = '1' ORDER BY rand();
+
+10. Mostrar los nombres de todos los actores que tienen una "a" en su apellido en orden inverso alfab�tico
+SELECT concat(first_name,' ',last_name) as full_name FROM actor WHERE last_name like '%a%' ORDER BY full_name DESC;
+
+11. Mostrar los nombres de todas las pel�culas que tengan una duraci�n mayor a 120 minutos en orden alfab�tico
+SELECT title,length FROM film WHERE length > 120 ORDER BY title;
+
+12. Mostrar los nombres de todas las pel�culas que tienen una clasificaci�n "PG-13" en orden inverso alfab�tico
+SELECT title,rating FROM film WHERE rating = 'PG-13' ORDER BY title DESC;
+
+13. Mostrar los nombres de todas las pel�culas que tienen una duraci�n menor a 90 minutos en orden alfab�tico.
+SELECT title,length FROM film WHERE length < 90 ORDER BY title;
+
+14. Mostrar los nombres y apellidos de todos los actores cuyo apellido comienza con la letra "C" en orden inverso alfab�tico
+SELECT concat(last_name,' ',first_name) as full_name FROM actor WHERE last_name like '%c' ORDER BY full_name DESC;
+
+15.  Mostrar los nombres de todas las pel�culas que tienen una duraci�n entre 90 y 120 minutos en orden aleatorio
+SELECT title,length FROM film WHERE length BETWEEN '90' and '120' ORDER BY rand();
+
+16.  Numero de pel�culas de cada rating
+SELECT COUNT(*) as numero_peliculas FROM `film` GROUP BY rating;
+
+17.Pel�culas que cuesten 0.99, 2.99 y tengan un rating �g� o �r� y que hablen de cocodrilos (cocodrile)
+
+
+
+18. Actores que tengan una x en el nombre o en el apellido
+SELECT concat(first_name,' ',last_name) as full_name FROM `actor` WHERE first_name or last_name like '%x%';
+
+
+19.Direcciones de california que tengan �274� en el n�mero de tel�fono
+SELECT district,phone FROM `address` WHERE phone like '%274%' and district = 'California';
+
+20. Pel�culas ��picas� (Epic) o �Brillantes� (brilliant) que duren m�s de 180 minutos
+SELECT title,length,description FROM `film` WHERE length > 180 AND description LIKE '%Epic%' OR '%brilliant%';
+
+21. Pel�culas que duren entre 100 y 120 minutos o entre 50 y 70 minutos 
+SELECT title,length FROM `film` WHERE length BETWEEN '100' and '120' OR length BETWEEN '50' and '70';
+
+22. Direcciones de ontario o de punjab o que su c�digo postal acabe en 5 o que su tel�fono acabe en 5
+SELECT district,postal_code,phone FROM `address` WHERE district = 'ontario' OR 'punjab' OR postal_code LIKE '%5' OR phone LIKE '%5';
+
+
+
+B- SAKILA -  Group by y having
+
+1. Mostrar el total de ventas por empleado que superen los $5000
+SELECT staff_id, SUM(amount) as total_ventas FROM `payment` GROUP BY staff_id HAVING total_ventas > 5000;
+
+2- Obtenga una lista de todos los clientes y la cantidad de pel�culas que han alquilado.
+
+
+3. Mostrar los pagos realizados por cada cajero cuyo total sea superior a $1500 y cuya cantidad de pagos sea mayor a 100
+
+BD NORTHWIND1
+
+1-Encontrar el nombre de cada puesto y el n�mero total de empleados en ese puesto.
+
+2-Encontrar el nombre de cada ciudad y el n�mero total de empleados que viven en esa ciudad.
+3- Encontrar el nombre de cada estado y el n�mero total de empleados que viven en ese estado.
+4-Encontrar el nombre de cada pa�s y el n�mero total de empleados que viven en ese pa�s.
+
+BD NORTHWIND2
+
+1- Mostrar los  primeros 5 clientes en orden alfab�tico por nombre. 
+2-Encontrar el nombre de cada pa�s y el n�mero total de clientes en ese pa�s.
+3-Encontrar el id  de cada producto y el total de ventas de ese producto.
+
+
+C- Crear la base de datos de su proyecto junto a los campos y a sus registros, esta base de datos es a modo de practica, el cuatrimestre que viene sufrira modificaciones, agregar una tabla de clientes con los campos (id, nombre, apellido, direccion,ciudad, Pais , email, telefono, administrador (si o no)  ) insertar 10 registros.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+
+D- crear una base de datos para un restaurante , con la cual incluya 5 TABLAS (menu, mesas, promociones, usuarios, venta)
+cada tabla tendra estos diferentes campos:
+MENU: id, producto, precio, stok, tipo, foto
+MESAS: id, numero , reservado
+PROMOCIONES: id, descuento
+USUARIO: id , nombre, nickname, password, correo
+VENTA: id, fecha, total, horario, cantidad, comensales, estado
+INSERTAR 20 REGISTROS DE CADA UNO.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+E- Crear una base de datos para una jugueteria , con la cual incluye 6 TABLAS (rango de edades, marcas, categoria,productos empleados,usuarios)
+cada tabla tendra estos diferentes campos:
+EDADES: id , nombre
+MARCAS: id , nombre
+CATEGORIA: id, nombre
+PRODUCTOS: id, nombre, descripcion, precio, destacado, sotck
+EMPLEADOS: id , nombre, rol
+USUARIOS: id, nombre, nickname, password, correo.
+INSERTAR 20 REGISTROS DE CADA UNO.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+F: Agregar , Actualizar y borrar registro a travez de codigo en las 3 base de datos y copiar el codigo a continuacion.
+
+Ejemplo de actualizar y borrar registros : 
+Actualizar :  UPDATE `actor` SET `first_name` = 'BETTEs' WHERE `actor_id` = 6;
+Eliminar:  DELETE FROM `actor` WHERE `actor_id` = 25"
+RECUERDEN UTILIZAR EL WHERE EN EL ID QUE QUIERAN ELIMINAR.
+
+
+
+
+
+
+

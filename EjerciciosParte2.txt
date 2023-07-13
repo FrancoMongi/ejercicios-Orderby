@@ -68,4 +68,9 @@ SELECT MIN(length) as DuracionMin FROM `film`;
 
 
 
+1- Sacar promeido de los precios pero agrupado por categoria y redondear y que no me muestre los valores null.
+
+
+
+
 
